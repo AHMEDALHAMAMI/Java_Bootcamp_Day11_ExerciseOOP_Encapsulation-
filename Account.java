@@ -49,6 +49,7 @@ public class Account {
     }
 
     public int debit(int amount){
+        if(balance > 0){
         balance -= amount;
         return balance;
     }
@@ -56,12 +57,15 @@ public class Account {
     public int transferTo(Account another, int amount){
         if (amount <= 0) {
             System.out.println("Amount must be greater than zero");
+            return0;
         }
         if (another == null) {
             System.out.println("Target account cannot be null");
+            return0;
         }
         if (this.balance < amount) {
             System.out.println("Not enough balance");
+            return 0;
         }
 
         this.debit(amount);
